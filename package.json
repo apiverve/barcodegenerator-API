@@ -1,24 +1,26 @@
 {
   "name": "@apiverve/barcodegenerator",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Barcode Generator is a simple tool for generating barcodes from data. It returns a URL to the generated image of the barcode.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "example": "node examples/basic.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/apiverve/barcodegenerator-API.git"
   },
   "keywords": [
-    "barcode generator","barcode generation","barcode generate","barcode api","barcode tool"
+    "barcode generator", "barcode generation", "barcode generate", "barcode api", "barcode tool"
   ],
   "author": "APIVerve <hello@apiverve.com> (http://apiverve.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/apiverve/barcodegenerator-API/issues"
   },
-  "homepage": "https://apiverve.com/marketplace/api/barcodegenerator?utm_source=npm",
+  "homepage": "https://apiverve.com/marketplace/barcodegenerator?utm_source=npm",
   "devDependencies": {
     "mocha": "^11.0.1",
     "chai": "^5.1.2",
@@ -27,6 +29,6 @@
   "dependencies": {
     "node-fetch": "^3.3.2",
     "promise": "^8.3.0",
-    "axios": "1.7.9"
+    "axios": "1.8.4"
   }
 }
