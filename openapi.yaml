@@ -1,0 +1,98 @@
+openapi: 3.0.4
+info:
+  title: Barcode Generator
+  description: Barcode Generator is a simple tool for generating barcodes from data. It returns a URL to the generated image of the barcode.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/barcodegenerator:
+    post:
+      summary: Generate Barcode from Data
+      description: Barcode Generator is a simple tool for generating barcodes from data. It returns a URL to the generated image of the barcode.
+      operationId: barcodegenerator
+      parameters: []
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  imageName: 57a22bf2-102a-4dfa-a65c-e521d05a9355.png
+                  format: .png
+                  type: CODE128
+                  expires: 1740173338237
+                  downloadURL: https://storage.googleapis.com/apiverve.appspot.com/barcodegenerator/57a22bf2-102a-4dfa-a65c-e521d05a9355.png?GoogleAccessId=635500398038-compute%40developer.gserviceaccount.com&Expires=1740173338&Signature=aFYDIpRA8Qy83jM7eXcknt8O0Pm5OqeLMNLgPOS6r3pTKcpha2u5pmYsweWEl%2BUsvW%2Fi2%2BKK7HtINdRItTuzQoxWkkyU2xBQAy%2B5jPCN0VoiGin6nEcvAxI6Vklw0nlp6yCnenUffaY1xNq%2FVfGQQTa74EOZweNRD7ZDblM7DRFtwMWQyJxkf5Yqae%2BtFvctVebgru%2B4Yj%2BXoNZaXckRNHMz5VxH7saAGxnVc0tKI0ypCg76cZeD8etIv2Jvv1VuhO8nKl6c4pE%2FeH16gJu2DWRAjRG%2F%2BXwwY7Uxpz%2BZ7VcfuNXbUuCDyQN2wMNgGaaZlR%2F4ISIs5N%2Bh29Ko8vnRBw%3D%3D
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: The data you want to generate a barcode from (string)
+                  example: '51001544700'
+                type:
+                  type: string
+                  description: The type of barcode you want to generate (code128, code39)
+                  example: code128
+                lineColor:
+                  type: string
+                  description: 'The color of the barcode (default: #000000)'
+                  example: '#000000'
+                backgroundColor:
+                  type: string
+                  description: 'The color of the barcode (default: #ffffff)'
+                  example: '#FFFFFF'
+                displayValue:
+                  type: boolean
+                  description: 'Whether to display the value below the barcode (default: true)'
+                  example: true
+              required:
+              - data
+              - type
+              example:
+                data: '51001544700'
+                type: code128
+                lineColor: '#000000'
+                backgroundColor: '#FFFFFF'
+                displayValue: true
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
